@@ -21,29 +21,30 @@ and open the template in the editor.
         require_once 'modelo/cita.php';
         require_once 'modelo/paciente.php';
         require_once 'modelo/conexion.php';
-        $controlador    = new Controlador();
+        $controlador    = new controlador();
         
         if( isset($_GET["accion"])){
             if($_GET["accion"] == "asignar"){
-                $controlador->verPagina('vista/html/asignar.php');
-            }elseif($_GET["accion"] == "guardarCita"){
-                $controlador->agregarCita($_POST["asignarDocumento"],
-                        $_POST["medico"],
-                        $_POST["fecha"],
-                        $_POST["hora"],
-                        $_POST["consultorio"]);
-                echo "Mensaje de prueba";
-            } 
-            if($_GET["accion"] == "consultar"){
-                $controlador->verPagina('vista/html/consultar.php');
-            }
-            if($_GET["accion"] == "cancelar"){
-                $controlador->verPagina('vista/html/cancelar.php');
-            }
-         
-        }   else {
-                $controlador->verPagina('vista/html/inicio.php');
-                }
+                $controlador->verPagina('Vista/html/asignar.php');
+                }elseif($_GET["accion"] == "consultar"){
+                    $controlador->verPagina('Vista/html/consultar.php');
+                    }elseif($_GET["accion"] == "cancelar"){
+                        $controlador->verPagina('Vista/html/cancelar.php');
+                        }elseif($_GET["accion"] == "guardarCita"){
+                            $controlador->agregarCita(
+                                    $_POST["asignarDocumento"],
+                                    $_POST["medico"],
+                                    $_POST["fecha"],
+                                    $_POST["hora"],
+                                    $_POST["consultorio"]);
+                            }elseif($_GET["accion"] == "consultarCita"){
+                                $controlador->consultarCitas($_POST["consultarDocumento"]);
+                                }elseif($_GET["accion"] == "cancelarCita"){
+                                    $controlador->cancelarCitas($_POST["cancelarDocumento"]);
+                                }
+        } else {
+            $controlador->verPagina('Vista/html/inicio.php');
+        }
        ?>
     </body>
 </html>

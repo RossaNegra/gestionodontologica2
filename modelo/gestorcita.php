@@ -2,6 +2,7 @@
 
 class GestorCita {
     public function agregarCita(Cita $cita){
+        echo "Hola estoy dentro de la funcion agregarcita, en gesor de cita";
         $conexion = new Conexion();
         $conexion->abrir();
         $fecha  = $cita->obtenerFecha();
@@ -21,7 +22,7 @@ class GestorCita {
     public function consultarCitaPorId($id){
           $conexion = new Conexion();
           $conexion->abrir();
-          $sql    = "SELECT pacientes.* , pedicos.*, consultorios.*, citas.*"                
+          $sql    = "SELECT pacientes.* , medicos.*, consultorios.*, citas.*"                
                   . "FROM Pacientes as pacientes, Medicos as medicos, Consultorios as consultorios ,citas "
                   . "WHERE citas.CitPaciente  = pacientes.PacIdentificacion "                
                   . "  AND citas.CitMedico    = medicos.MedIdentificacion "                

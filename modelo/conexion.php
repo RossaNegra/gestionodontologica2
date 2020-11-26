@@ -11,6 +11,7 @@ class Conexion {
         if(mysqli_connect_error()){
             return 0;
         } else {
+            echo" conexion exitosa en abrir server";
             return 1;
         }
     }
@@ -24,6 +25,7 @@ class Conexion {
         $this->result = $this->mySQLI->query($this->sql);
         $this->filasAfectadas = $this->mySQLI->affected_rows;
         $this->citaId = $this->mySQLI->insert_id;
+        echo " Estoy dentro de funcion consulta";
     }
     
     public function obtenerResult(){
